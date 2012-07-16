@@ -4,4 +4,7 @@ title: "2012-07-16"
 date: 2012-07-16 15:06
 comments: true
 categories: 
+- weekly-sum-up
 ---
+1 Adding colors to git diff by default
+  * [source1](http://j-query.blogspot.jp/2011/03/adding-colors-to-git-diff-by-default.html)
