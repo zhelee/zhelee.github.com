@@ -1,0 +1,7 @@
+---
+layout: post
+title: "2012-07-16"
+date: 2012-07-16 15:06
+comments: true
+categories: 
+---
