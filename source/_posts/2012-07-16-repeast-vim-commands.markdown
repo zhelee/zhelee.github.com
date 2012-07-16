@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "repeast vim commands"
+title: "repeat vim commands"
 date: 2012-07-16 15:53
 comments: true
 categories: 
