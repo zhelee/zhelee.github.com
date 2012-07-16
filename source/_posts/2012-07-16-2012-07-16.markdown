@@ -6,5 +6,5 @@ comments: true
 categories: 
 - weekly-sum-up
 ---
-1 Adding colors to git diff by default
-  * [source1](http://j-query.blogspot.jp/2011/03/adding-colors-to-git-diff-by-default.html)
+1.  Adding colors to git diff by default
+    [source1](http://j-query.blogspot.jp/2011/03/adding-colors-to-git-diff-by-default.html)
