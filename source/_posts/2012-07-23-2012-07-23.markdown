@@ -1,0 +1,9 @@
+---
+layout: post
+title: "2012-07-23"
+date: 2012-07-23 18:08
+comments: true
+categories: 
+- weekly-sum-up
+---
+1. git completion; git alias; more color configuration
