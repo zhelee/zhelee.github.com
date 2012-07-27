@@ -7,4 +7,5 @@ categories:
 - weekly-sum-up
 ---
 1. git completion; git alias; more color configuration
-2. active_record callbacks, orders, exceptions
+2. easy to use bash tips
+3. rspec mocks
