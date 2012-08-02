@@ -1,0 +1,11 @@
+---
+layout: post
+title: "2012-08-02"
+date: 2012-08-02 17:27
+comments: true
+categories: 
+- weekly-sum-up
+---
+
+1. rails helpers
+2. git reset , git branch operation
