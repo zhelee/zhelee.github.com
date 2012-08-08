@@ -1,0 +1,15 @@
+---
+layout: post
+title: "2012-08-08"
+date: 2012-08-08 10:11
+comments: true
+categories: 
+- weekly-sum-up
+---
+1. git rebase
+    *[git rebase 小计](http://blog.yorkxin.org/2011/07/29/git-rebase)
+2. tig
+3. [git branch in shell prompt](http://zeusville.wordpress.com/2010/05/19/git-branch-in-shell-prompt/)
+4. shell prompt colors
+5. configurations
+    * [ihower](http://ihower.tw/blog/archives/5436/)

@@ -8,4 +8,12 @@ categories:
 ---
 
 1. rails helpers
+    * render_to_string
+    * [rails helper method in controller](http://api.rubyonrails.org/classes/AbstractController/Helpers/ClassMethods.html#method-i-helper)
+    * [rails helper share in controller and view](http://stackoverflow.com/questions/453762/nomethoderror-when-trying-to-invoke-helper-method-from-rails-controller)
+    * [rails helper are shit](http://nicksda.apotomo.de/2011/10/rails-misapprehensions-helpers-are-shit/)
+    * [rails same helper for differnt controller and others](http://stackoverflow.com/questions/5938895/how-to-define-rails-helper-for-one-specific-action)
 2. git reset , git branch operation
+    * [git reset](http://blog.microsuncn.com/?tag=git-reset-%E5%9B%9E%E9%80%80%E4%BB%A5%E5%89%8D%E6%9F%90%E4%B8%AA%E7%89%88%E6%9C%AC)
+    * [git delete branch local and remote](http://stackoverflow.com/questions/2003505/how-do-i-delete-a-git-branch-both-locally-and-in-github)
+    * [git all branches](http://stackoverflow.com/questions/67699/how-do-i-clone-all-remote-branches-with-git)
