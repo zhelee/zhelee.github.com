@@ -13,3 +13,23 @@ categories:
 4. shell prompt colors
 5. configurations
     * [ihower](http://ihower.tw/blog/archives/5436/)
+6. workflow
+    * [git working model](http://nvie.com/posts/a-successful-git-branching-model/)
+7. shell
+    * [shell prompt](http://networking.ringofsaturn.com/Unix/Bash-prompts.php)
+    * [shell prompt colors](https://wiki.archlinux.org/index.php/Color_Bash_Prompt)
+8. tips
+    * [25 tips](http://andyjeffries.co.uk/articles/25-tips-for-intermediate-git-users/)
+9. rake
+    * [rake completion](http://turadg.aleahmad.net/2011/02/bash-completion-for-rake-tasks/)
+10. vim
+    * [vim builtin completion](http://www.thegeekstuff.com/2009/01/vi-and-vim-editor-5-awesome-examples-for-automatic-word-completion-using-ctrl-x-magic/)
+11. rails
+    * composed_of
+    * locale
+        * t(".locale_translation"), in this way, it will find by the view path, app/views/people/index will be people.index.local_translation
+12. linux
+    * echo something >> file , will append something to the end file
+13. YAML
+    * [share value](http://stackoverflow.com/questions/9254178/is-there-yaml-syntax-for-sharing-part-of-a-list-or-map)
+
