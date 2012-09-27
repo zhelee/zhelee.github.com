@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: notcoder | Lizhe.name]]></title>
+  <link href="http://zhelee.github.com/blog/categories/notcoder/atom.xml" rel="self"/>
+  <link href="http://zhelee.github.com/"/>
+  <updated>2012-09-27T22:17:32+08:00</updated>
+  <id>http://zhelee.github.com/</id>
+  <author>
+    <name><![CDATA[Lizhe]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[speciality_of_a_coder_1]]></title>
+    <link href="http://zhelee.github.com/blog/2012/08/28/speciality-of-a-coder-1/"/>
+    <updated>2012-08-28T10:33:00+08:00</updated>
+    <id>http://zhelee.github.com/blog/2012/08/28/speciality-of-a-coder-1</id>
+    <content type="html"><![CDATA[<p>程序员需要的特质1：懒惰。</p>
+
+<p>如何成为一个好的程序员，懒惰是地一个前提</p>
+]]></content>
+  </entry>
+  
+</feed>

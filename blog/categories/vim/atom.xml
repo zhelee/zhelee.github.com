@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: vim | Lizhe.name]]></title>
+  <link href="http://zhelee.github.com/blog/categories/vim/atom.xml" rel="self"/>
+  <link href="http://zhelee.github.com/"/>
+  <updated>2012-09-27T22:17:32+08:00</updated>
+  <id>http://zhelee.github.com/</id>
+  <author>
+    <name><![CDATA[Lizhe]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[ruby vim code completion]]></title>
+    <link href="http://zhelee.github.com/blog/2012/07/19/ruby-vim-code-completion/"/>
+    <updated>2012-07-19T10:15:00+08:00</updated>
+    <id>http://zhelee.github.com/blog/2012/07/19/ruby-vim-code-completion</id>
+    <content type="html"><![CDATA[<h3>the best editor I have ever used.</h3>
+
+<p><a href="https://github.com/vim-ruby/vim-ruby">vim-ruby</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[vim colorful status bar]]></title>
+    <link href="http://zhelee.github.com/blog/2012/07/16/vim-colorful-status-bar/"/>
+    <updated>2012-07-16T16:48:00+08:00</updated>
+    <id>http://zhelee.github.com/blog/2012/07/16/vim-colorful-status-bar</id>
+    <content type="html"><![CDATA[<p><a href="https://github.com/Lokaltog/vim-powerline">powerline</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[repeat vim commands]]></title>
+    <link href="http://zhelee.github.com/blog/2012/07/16/repeast-vim-commands/"/>
+    <updated>2012-07-16T15:53:00+08:00</updated>
+    <id>http://zhelee.github.com/blog/2012/07/16/repeast-vim-commands</id>
+    <content type="html"><![CDATA[<p>There are some commands which could be used to repeat vim commands.</p>
+]]></content>
+  </entry>
+  
+</feed>

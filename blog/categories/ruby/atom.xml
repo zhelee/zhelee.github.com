@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: ruby | Lizhe.name]]></title>
+  <link href="http://zhelee.github.com/blog/categories/ruby/atom.xml" rel="self"/>
+  <link href="http://zhelee.github.com/"/>
+  <updated>2012-09-27T22:17:32+08:00</updated>
+  <id>http://zhelee.github.com/</id>
+  <author>
+    <name><![CDATA[Lizhe]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[ruby vim code completion]]></title>
+    <link href="http://zhelee.github.com/blog/2012/07/19/ruby-vim-code-completion/"/>
+    <updated>2012-07-19T10:15:00+08:00</updated>
+    <id>http://zhelee.github.com/blog/2012/07/19/ruby-vim-code-completion</id>
+    <content type="html"><![CDATA[<h3>the best editor I have ever used.</h3>
+
+<p><a href="https://github.com/vim-ruby/vim-ruby">vim-ruby</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[ruby index]]></title>
+    <link href="http://zhelee.github.com/blog/2012/07/17/ruby-index/"/>
+    <updated>2012-07-17T10:22:00+08:00</updated>
+    <id>http://zhelee.github.com/blog/2012/07/17/ruby-index</id>
+    <content type="html"><![CDATA[<ol>
+<li>Method
+
+<ul>
+<li><a href="http://blog.rlmflores.me/blog/2012/07/16/method-with-options/">with options</a></li>
+</ul>
+</li>
+</ol>
+
+]]></content>
+  </entry>
+  
+</feed>
