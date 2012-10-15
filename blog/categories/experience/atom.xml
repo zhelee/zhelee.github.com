@@ -4,7 +4,7 @@
   <title><![CDATA[Category: experience | Lizhe.name]]></title>
   <link href="http://zhelee.github.com/blog/categories/experience/atom.xml" rel="self"/>
   <link href="http://zhelee.github.com/"/>
-  <updated>2012-10-15T08:26:26+08:00</updated>
+  <updated>2012-10-15T08:28:49+08:00</updated>
   <id>http://zhelee.github.com/</id>
   <author>
     <name><![CDATA[Lizhe]]></name>
@@ -71,6 +71,107 @@
 
 <blockquote><p>没有土壤？IT行业最开放，就算没有土壤也完全可以自学，网上资料一把一把的。别的行业你可能自学吗？你有条件吗？
 不是没土壤，还是你自己能力问题！</p></blockquote>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[after-one-year]]></title>
+    <link href="http://zhelee.github.com/blog/2012/09/28/after-one-year/"/>
+    <updated>2012-09-28T21:17:00+08:00</updated>
+    <id>http://zhelee.github.com/blog/2012/09/28/after-one-year</id>
+    <content type="html"><![CDATA[<p>After being working in <a href="www.secondbureau.com">SecondBureau</a> for 1 year, I
+learned a lot things, this post is about my experience in this company.</p>
+
+<p>Something I want to mention at the beginning of this post:</p>
+
+<ol>
+<li>I am Chinese, worked in the Chinese comapny before I enter this French
+company</li>
+<li>I used Java as main language before, and I use Ruby in the current company</li>
+<li>I used Microsoft Windows before, and now I use xubuntu in company</li>
+</ol>
+
+
+<p>Now I am more and more clear how to be a good and successful coder, I think if I
+didn't enther the current company, I don't know how much time it will take to
+let me known how to become a better coder, becuase what I learned in the past
+year in the current company is even more than the last 3 years before the
+previous year.</p>
+
+<p>Here I want to share some of tips those I learned in the past year.</p>
+
+<p><strong>1. Write specification at the very beginning, and really thinking about the
+needs.</strong> Some people say they are using <strong>Agile</strong> now, they don't need specification, they
+do it by iteration. I trust this before, but actually it's wrong, because
+<strong>Agile</strong> doesn't mean without specification or any documents. My boss teach me to
+write my first specification, after that I feel I am much more clear about the
+needs, the specification has no relationship with the code, it only describes
+the features, and let you think about how does the user want to use the software, and
+what they want to do with it, with some work flow chart, we can know the
+process. In this step, we would know how the user want to use the software and
+some special needs. I think that's enough, we write this basic specification and
+meet the clients to talk with them , and make the specification better.</p>
+
+<p><strong>2. Make plans for the day, the week, the month.</strong> If you are not clear about
+your work for the day, just stop and think about it, if you can make a plan for
+the next week, the next month, or even the next half year, everything will be
+easier, why, because every second you know what you should do, and know what
+kind of problems you might meet, and know how to fix the problem. Making plan is
+really a thing which will cause you to think about future. Thinking about the
+clients, maybe they will change their minds about the software, maybe we can
+prepare something which we think they are needed in the future, maybe a big
+overview about the next month. Making plan can let you have a good feeling about
+future, and we can control it better, this means, less problems, more things
+under control. Another point is we need adjust the plan by the end of the day,
+the week, the month, through this we know the problem, and we can improve
+ourselves or let us know better future.</p>
+
+<p><strong>3. Charts and prototype.</strong>  Some of people like me don't have sense with
+charactors, but a picture can make us very clear about things in a minute. And
+for colleage and client, it's the same. Draw things when you think about the
+working flow and the user interface. We can use some tools to draw it very
+quickly, it really show the meanings. It make us easily understand each other,
+especially for the clients.</p>
+
+<p><strong>4.Talking with your colleages.</strong> Talk with your colleages can improve yourself
+very fast. Maybe you are stucked with a problem, and you have been thinking for
+2 hours, without any result. some people will continue, and some will ask. We
+are working, not researching, so we need result as soon as possible, if it
+already takes a lot of time, you need to ask, or communicate with others, maybe
+others alreay know the solution, or maybe they have met something like that, it
+will help you to fix the problem.</p>
+
+<p><strong>5. Give feedback as soon as possible.</strong>  3 months ago, I made a big mistake.
+After 3 weeks, I told the boss I want to change the way to implement the
+feature. It's really very bad. 2 points here, why do you want to change the way and
+why do you want to change after 3 weeks. Let's focus on the second question. The
+first one is caused by the second one. Why do you want to change after 3 weeks,
+it should not happen if you give feedback as soon as possible. Others can
+evaluate the result and talk about this way and this feature, and point out some
+keys. in this way we would change in 3 days, not 3 weeks. It takes less time but
+more effitioncy work.</p>
+
+<p><strong>6. Focusing on 1 or 2 technologies, not 100.</strong> I like technology, I spent a lot
+of on internet to find what's newest language, what's the best framework,
+something like that. but finally I find that, I don't know the very basic thing
+of the language which I use everyday. everytime I need to find api docs to check
+how to use the method, even I have used it for 10 times. If you are people like
+me, stop searching on internet about the coolest technology, you can do this
+before you sleep, take half an hour to do this, but not 4 hours everyday.
+Focusing the technology you use everyday, know the basic and advanced, it can
+help you work more efficency, and fix problems easily.</p>
+
+<p><strong>7. Do something which is related your work and technology.</strong> I love
+technology, so I spent a lot of time on it, and sometime I got headache. Some
+pelple say people who don't know how to take rest, they don't know how to work.
+So read a book which is related to your work, or do some sports after work. This
+is really releated to your habits, bacause some people really don't need "rest".</p>
+
+<p>This post is not very realted to technology, but when you start think about any
+of the above points, you are starting to be a better coder. because although we
+work as a coder, half of the work is not writing code, they are manageing,
+planning, thinking, communicating and writing code. If you are stucked by your
+work, don't know how to improve yourself, please think about other points.</p>
 ]]></content>
   </entry>
   
