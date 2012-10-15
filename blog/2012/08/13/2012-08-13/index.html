@@ -160,7 +160,7 @@ Rails pry as debuger
         <a class="basic-alignment left" href="/blog/2012/08/08/2012-08-08/" title="Previous Post: 2012-08-08">&laquo; 2012-08-08</a>
       
       
-        <a class="basic-alignment right" href="/blog/2012/08/22/something/" title="Next Post: something">something &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2012/08/28/speciality-of-a-coder-1/" title="Next Post: speciality_of_a_coder_1">speciality_of_a_coder_1 &raquo;</a>
       
     </p>
   </footer>
@@ -181,15 +181,15 @@ Rails pry as debuger
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2012/09/28/whats-wrong-with-these-coders/">程序员到底怎么了</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/08/30/active-record-dirty/">active_record_dirty</a>
       </li>
     
       <li class="post">
         <a href="/blog/2012/08/28/speciality-of-a-coder-1/">speciality_of_a_coder_1</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/08/22/something/">something</a>
       </li>
     
       <li class="post">
@@ -201,6 +201,35 @@ Rails pry as debuger
       </li>
     
   </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/zhelee">@zhelee</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'zhelee',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
 </section>
 
 
