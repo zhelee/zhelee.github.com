@@ -4,7 +4,7 @@
   <title><![CDATA[Lizhe.name]]></title>
   <link href="http://zhelee.github.com/atom.xml" rel="self"/>
   <link href="http://zhelee.github.com/"/>
-  <updated>2012-10-15T08:32:34+08:00</updated>
+  <updated>2012-11-12T09:01:05+08:00</updated>
   <id>http://zhelee.github.com/</id>
   <author>
     <name><![CDATA[Lizhe]]></name>
@@ -12,6 +12,214 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[How do I learn ruby and rails]]></title>
+    <link href="http://zhelee.github.com/blog/2012/11/12/how-do-I-learn-ruby-and-rails/"/>
+    <updated>2012-11-12T07:33:00+08:00</updated>
+    <id>http://zhelee.github.com/blog/2012/11/12/how-do-I-learn-ruby-and-rails</id>
+    <content type="html"><![CDATA[<p>I have learned ruby and rails for 1 year and 4 months. I collected a lot of great resources about ruby and rails from internet, it could be helpeful for you to start learning ruby and rails.</p>
+
+<h2>Ruby Language</h2>
+
+<h4>Books</h4>
+
+<p>The best book to start learning ruby is <strong>Programming Ruby</strong></p>
+
+<p><img src="http://img3.douban.com/mpic/s5616673.jpg" alt="programming ruby" /></p>
+
+<p>This book tells everything about basic ruby language, it&#8217;s very good to start.</p>
+
+<p>As ruby has its own style to code, another very good book to learn ruby style is <strong>Eloquent Ruby</strong></p>
+
+<p><img src="http://img3.douban.com/mpic/s4683957.jpg" alt="Eloquent Ruby" /></p>
+
+<p>and to learn what makes <strong>Rails</strong>, you need to know the <strong>Meta Programming</strong>, the best book for this area is <strong>Metaprogramming Ruby</strong></p>
+
+<p><img src="http://img3.douban.com/mpic/s4209424.jpg" alt="Metaprogramming Ruby" /></p>
+
+<h4>RVM</h4>
+
+<p><a href="rvm.io">RVM</a> is a tool to install different rubies in a same computer, whenver you wanna switch to another version, you can do that very easily by using RVM.</p>
+
+<h4>Rubygems</h4>
+
+<p>Rubygems are the package of ruby code, just like <strong>jar</strong> in Java. It&#8217;s a must learning tool. You can just browse the offical website of <a href="http://rubygems.org">Rubygems</a>, and check the <a href="http://guides.rubygems.org/">offical documentation</a>, and learn how to <a href="http://guides.rubygems.org/make-your-own-gem/">write your own ruby gem</a></p>
+
+<h4>Bundler</h4>
+
+<p><a href="http://gembundler.com/">Bundler</a> is great tool to manage gem dependencies. It means you have lots of gems in a ruby project, and different gems dependend on other different version gems, bundler can help manage that, it&#8217;s a little like <strong>Maven</strong> in Java. <strong>Using bundler, it&#8217;s more easy to start a ruby gem, check the link to know how to do that</strong>, <a href="http://gembundler.com/rubygems.html">create gem by using bundler</a></p>
+
+<h4>RSpec</h4>
+
+<p>The best testing framework in ruby, after using it, you will love it. check the link <a href="rspec.info">RSpec</a></p>
+
+<p><em>The above are the basic knowledge which make the ruby world so exciting, after you know all of this, it&#8217;s much more easier to start exploring things in the ruby world</em></p>
+
+<h2>Rails</h2>
+
+<h4>The best resource to start learning rails</h4>
+
+<p><a href="http://guides.rubyonrails.org/">Ruby on Rails Guides</a> is always the best resource to start learning rails, and lots books just copy the content here. So before you finish that, you don&#8217;t need any other resource.</p>
+
+<h4>Railscasts</h4>
+
+<p><a href="http://www.railscasts.com">Railscasts</a> is very good resource for people to learn rails, the quality is great, you need check all of them.</p>
+
+<h4>Books</h4>
+
+<p>There are some books for the specific topics in Rails.</p>
+
+<p><strong>Views</strong>  <a href="http://pragprog.com/book/warv/the-rails-view">The Rails View: Create a Beautiful and Maintainable User Experience</a></p>
+
+<p><img src="http://imagery.pragprog.com/products/233/warv_xlargecover.jpg?1331645481" alt="The Rails View" /></p>
+
+<p><strong>Recipes</strong>  <a href="http://pragprog.com/book/rr2/rails-recipes">Rails Recipes: Rails 3 Edition</a></p>
+
+<p><img src="http://imagery.pragprog.com/products/239/rr2_xlargecover.jpg?1300128814" alt="Rails Recipes" /></p>
+
+<p><strong>Deploying</strong>  <a href="http://pragprog.com/book/cbdepra/deploying-rails">Deploying Rails: Automate, Deploy, Scale, Maintain, and Sleep at Night</a></p>
+
+<p><img src="http://imagery.pragprog.com/products/246/cbdepra_xlargecover.jpg?1331155494" alt="Deploying Rails" /></p>
+
+<p><em>Until now, the resources are the traditional resources, reading the official documentation and reading some books, There are some other more advanced way to learn ruby and rails</em></p>
+
+<h2>Keep tracking the new knowledge of the community</h2>
+
+<p>Here I introduce 2 podcasts, In the podcast you can always get what is happening in the ruby and rails community, new technology or new gems, most of the time, you need them, maybe a gem can help you, maybe a new trick can help you. here are the links</p>
+
+<ol>
+<li><a href="http://rubyshow.com/">The Ruby Show</a></li>
+<li><a href="http://ruby5.envylabs.com">Ruby5</a></li>
+</ol>
+
+
+<h2>Stackoverflow</h2>
+
+<p><a href="http://stackoverflow.com">Stackoverflow</a> is a friend of the coder&#8217;s. One day, I think stackoverflow is a great place to learn things, it&#8217;s not only questions, but try to answer others questions, to kown whether you can solve the problems is really good way to improve yourself, because all the problems people meet you may meet in the future. So you can subscribe the <strong>Ruby</strong> and <strong>Ruby On Rails</strong> topics, try to answer some questions.</p>
+
+<h2>Github</h2>
+
+<p>People from Ruby and Rails community love <a href="http://github.com">Github</a>, because it&#8217;s built with Rails, and it&#8217;s a great tool to share code, manage code by using <strong>Git</strong>. But another very good thing in github is <strong>exploring</strong>, Here the link <a href="https://github.com/explore">explore</a>, you can choose <a href="https://github.com/languages">Languages</a>, and select <a href="https://github.com/languages/Ruby">Ruby</a> to check the hottest ruby repository code, and learn from the code.</p>
+
+<h2>Ruby Toolbox</h2>
+
+<p><a href="https://www.ruby-toolbox.com/">Ruby Toolbox</a> is a great tool to choose Rubygems. For example, you wanna a cms framework, you don&#8217;t need google but ruby toolbox. I think here you can find the best gem in every categories, the best cms framework, the best deployment gem, the best testing framework and so on.</p>
+
+<h2>Ruby weekly newsletter</h2>
+
+<p><a href="http://rubyweekly.com/">Ruby Weekly</a> is a weekly newsletter about infomation from Ruby and Rails community, you&#8217;ll find great tool or tricks every week.</p>
+
+<h2>Ruby Blogs</h2>
+
+<p><a href="http://www.rubyinside.com/">Ruby Inside</a>. People only talk about Ruby and Rails here. A lot of more <strong>advanced</strong> topic, such as deployment, performance, cloud and so on.</p>
+
+<p><a href="http://rubysource.com/">Ruby Source</a>. Here is another blog, It talks about more tricks which could be used in your project.</p>
+
+<hr />
+
+<p><em><strong>This post will be always update when I find new resource which is great to share here</strong></em></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Production Rails]]></title>
+    <link href="http://zhelee.github.com/blog/2012/11/12/production-rails/"/>
+    <updated>2012-11-12T07:24:00+08:00</updated>
+    <id>http://zhelee.github.com/blog/2012/11/12/production-rails</id>
+    <content type="html"><![CDATA[<p><strong> The tools </strong></p>
+
+<ol>
+<li>Nginx</li>
+<li>Passenger</li>
+<li>Memedcache</li>
+<li>Capistrano</li>
+<li>RVM</li>
+<li>Git</li>
+<li>Linux (We are using ubuntu 12.10)</li>
+</ol>
+
+
+<p><strong> Ruby and Rails </strong></p>
+
+<ol>
+<li>Ruby 1.9.3</li>
+<li>Rails 3.2.8</li>
+</ol>
+
+
+<p><strong> Database </strong></p>
+
+<ol>
+<li>PostgresSQL 9.1</li>
+</ol>
+
+
+<p><strong> Some linux knowledge </strong></p>
+
+<ol>
+<li>How to start, stop, restart a linux service</li>
+<li>How to let a service start when linux boot up</li>
+<li>How to create a user in linux</li>
+<li>SSH</li>
+</ol>
+
+
+<p><strong> The big overview for deploying an rails production application </strong></p>
+
+<ol>
+<li>Use Git as the source control system. Before deploying the application to the server, forbid any code change to be pushed to the Git server;</li>
+<li>Check the code through Git in CI server, and run the test, if tests are passed, go to step 3;</li>
+<li>Run capistrano to deploy the application, in the capistrano deploying file, there are the following steps:
+
+<ol>
+<li>set the status of the current production application server to be <strong>maintenance</strong>;</li>
+<li>deploy the code</li>
+<li>run the assets compile</li>
+<li>run the database migration</li>
+<li>set the status of the current production application server to be <strong>running</strong>;</li>
+<li>if the new code fails to run, use capistrano to rollback the previous version;</li>
+<li><strong><strong>something about cache</strong></strong></li>
+</ol>
+</li>
+</ol>
+
+
+<hr />
+
+<h2>Create a depoyer user</h2>
+
+<p><strong> 1. Why do we need to create a new user to deploy the application </strong></p>
+
+<p>When we deploy a proudction rails, it&#8217;s a little different from its development mode and it&#8217;s better to let a specific user with specific rights to do the deployment to avoid mistakes, and it&#8217;s easier to log the deployments.</p>
+
+<p><strong> 2. How to </strong></p>
+
+<p>In ubuntu, we use the following command to create an user with specific home directory and a password: <code>sudo adduser deployer</code>, and follow the prompted instruction, it&#8217;s easily to create a user called deployer with a home directory /home/deployer.</p>
+
+<h2>Install the softwares</h2>
+
+<p><strong> 1. Install RVM, Ruby, Rails, PostgresSQL </strong></p>
+
+<p>There are thousands of tutorials to install these things, just remember the version we mentioned above. And there are some points which could help if there got some problems:</p>
+
+<ol>
+<li>RVM for single user or system. I recommend to install as system on a server, because ruby could be used for other users, for example maintenance users. and the user wants to user rvm is needed to be added to the rvm group;</li>
+<li><strong><strong> For PostgresSQL. When you first install PostgresSQL, it&#8217;s needed to configure <code>/etc/postgres/9.1/main/pg_hba.conf</code> to let PostgresSQL to be able to be connected.</strong></strong>;</li>
+</ol>
+
+
+<p><strong> 2. Install passenger </strong></p>
+
+<p>Installing passenger is so easy, just the following 2 steps:</p>
+
+<ol>
+<li><code>gem install passenger</code></li>
+<li><code>[rvmsudo] passenger-install-nginx-module</code></li>
+</ol>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[程序员到底怎么了]]></title>
@@ -161,7 +369,7 @@ before you sleep, take half an hour to do this, but not 4 hours everyday.
 Focusing the technology you use everyday, know the basic and advanced, it can
 help you work more efficency, and fix problems easily.</p>
 
-<p><strong>7. Do something which is related your work and technology.</strong> I love
+<p><strong>7. Do something which is not related your work and technology.</strong> I love
 technology, so I spent a lot of time on it, and sometime I got headache. Some
 pelple say people who don&#8217;t know how to take rest, they don&#8217;t know how to work.
 So read a book which is related to your work, or do some sports after work. This
