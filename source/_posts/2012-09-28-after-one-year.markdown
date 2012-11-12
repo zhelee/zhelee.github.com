@@ -86,7 +86,7 @@ before you sleep, take half an hour to do this, but not 4 hours everyday.
 Focusing the technology you use everyday, know the basic and advanced, it can
 help you work more efficency, and fix problems easily.
 
-**7. Do something which is related your work and technology.** I love
+**7. Do something which is not related your work and technology.** I love
 technology, so I spent a lot of time on it, and sometime I got headache. Some
 pelple say people who don't know how to take rest, they don't know how to work.
 So read a book which is related to your work, or do some sports after work. This
