@@ -9,16 +9,7 @@
   <meta name="author" content="Lizhe">
 
   
-  <meta name="description" content="The tools Nginx
-Unicorn
-PostgreSQL
-Capistrano
-RVM
-Git
-Puppet
-Vagrant
-Linux (We are using ubuntu 12.10) Ruby and Rails Ruby 1.9.3
-Rails 3.2.11 &hellip;">
+  <meta name="description" content="Being a rails developer for almost 2 years, I found a lot of tools for easily developing rails application including ruby gems, editors, browser &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -73,6 +64,90 @@ Rails 3.2.11 &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/04/07/tools-for-every-rails-developer/">Tools and Tips for Every Rails Developer</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-07T21:19:00+08:00" pubdate data-updated="true">Apr 7<span>th</span>, 2013</time>
+        
+         | <a href="/blog/2013/04/07/tools-for-every-rails-developer/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Being a rails developer for almost 2 years, I found a lot of tools for easily developing rails application including ruby gems, editors, browser extensions, frameworks. Here I list some tools where I think should be use in every rails application development.</p>
+
+<h3>1. Zeus</h3>
+
+<p>Whenever after you start rails, you want to start rails console, generate a model or execute rake task, as it needs to load the whole rails application instance, it will take some time, if it is a big application, for example, it has 30 models, it will take so long time. Use Zeus, it will preload the application, so every command will be executed by using this application instance. Check the official github documention. <a href="https://github.com/burke/zeus">Zeus</a>.</p>
+
+<h3>2. Shell prompt</h3>
+
+<p><img src="https://a248.e.akamai.net/camo.github.com/f77fc2ea241f3bf84256dde18342c5e25ab352c3/687474703a2f2f692e696d6775722e636f6d2f42726b6d302e706e67" alt="shell prompt" /></p>
+
+<p>As a rails developer, we use terminal a lot. the default shell prompt is just the current user, current host and current folder. We want to know the current git status, wether we have changed something, or is there any conflicts, which branch we are working on. There are 2 github repository for easily integrate these kind of prompt, if you use bash, you can use <a href="https://github.com/revans/bash-it">Bash-it</a>, if zsh, you can use <a href="https://github.com/robbyrussell/oh-my-zsh">Oh-my-zsh</a></p>
+
+<h3>3. Better Errors And Rails Panel</h3>
+
+<p>Default rails error page does not show too mush information for you to debug. Use <a href="https://github.com/charliesome/better_errors">Better errors</a> can show you more information, and provide an interactive console to dig into the code.
+<img src="https://a248.e.akamai.net/camo.github.com/f05d967fb90cbe3e686ad794062c2151f7ee19a5/687474703a2f2f692e696d6775722e636f6d2f7a594f58462e706e67" alt="better errors" /></p>
+
+<p><a href="https://github.com/dejan/rails_panel">Rails Panel</a> just let you leave rails development log, just focus on the browser itself, it contains a rubygem and google chrome extension, in the google chrome extension, there is an panle show all the development information.</p>
+
+<h3>4. Short Cuts</h3>
+
+<p>Everyday you type <code>rails s</code> or <code>rails s -p 3010</code> to start the rails server, have you think to type less, for example <code>rs</code> to <code>rails s</code> or <code>rails s -p 3010</code>, <code>rg</code> to <code>rails g</code>, <code>rc</code> to <code>rails c</code>. Simply add all of these short cuts to your .bashrc to set your own customized command. Not only rails itself, you can have other short cuts like <code>git st</code> to stands for <code>git status</code> in .gitconfig</p>
+
+<h3>5. Guard-Livereload And Guard-Rails</h3>
+
+<p><img src="https://a248.e.akamai.net/camo.github.com/dfda2a47ddefe982a455c391c6788fa62a5c70d9/687474703a2f2f696d673531352e696d616765736861636b2e75732f696d673531352f313335382f677561726469636f6e2e706e67" alt="Guard" /></p>
+
+<p>You change a css color and go back to the browser, and refresh it to get the result. In a rails application, you dont need to do this. If you have a bigger monitor or 2 monitor, you will love Guard-Livereload. Simplely add Guard-Livereload, and install livereload extension in google chrome or firefox. after setup the Guard file, whenever you change the view, css, or images, the browser will refresh automatically. You can not miss it if you are developing the view part.
+Whenver you change a file which need to restart rails server, you will kill the rails first, and use <code>rails s</code> to start it again. Use Guard-rails you dont need to do this, it will restart rails automatically, you just need to config the Guardfile to add lines to specify which file changement need to restart rails app.</p>
+
+<h3>6. RSpec, Spork, Guard-RSpec, Guard-Spork</h3>
+
+<p>RSpec is a very good testing framework in Ruby, it should be used in every ruby project, of course in rails. As whenver running the tests need to load the rails application, it could need a long time to execute the tests, use <a href="https://github.com/guard/guard-spork">Guard-Spork</a> will preload the rails application, and use (Guard-RSpec) will only run tests which are related to the changed file. The related rules are configurable in Guardfile.</p>
+
+<h3>7. Quiet Assets</h3>
+
+<p>In most of time you dont need show assets log in rails development log, just add <code>gem 'quiet_assets', :group =&gt; :development</code> in your Gemfile, and the world will be much more quieter.</p>
+
+<h3>8. Pry, Pry-Debugger And Pry-Rails</h3>
+
+<p><img src="http://pryrepl.org/images/pry_logo.png" alt="pry" /></p>
+
+<p><a href="https://github.com/pry/pry">Pry</a> is great tool to inspect ruby variables, simplily add <code>pry-rails</code> to your Gemfile, when you execute <code>rails c</code> it will use <code>pry</code> as the console instead of <code>irb</code>. add <code>pry-debugger</code> to your Gemfile, you will get a debugger using pry, you can use <code>next</code>, <code>step</code> to navigate.</p>
+
+<h3>9. Vagrant</h3>
+
+<p>you need a production like environment to simulate something, use <a href="vagrantup.com">Vagrant</a>. you can write a script to setup a production rails environment in minutes, and this environment could be duplicated. You can destroy it and rebuild it very easily.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -873,49 +948,6 @@ work, don&#8217;t know how to improve yourself, please think about other points.
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/07/23/2012-07-23/">2012-07-23</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-07-23T18:08:00+08:00" pubdate data-updated="true">Jul 23<span>rd</span>, 2012</time>
-        
-         | <a href="/blog/2012/07/23/2012-07-23/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><ol>
-<li>git completion; git alias; more color configuration</li>
-<li>easy to use bash tips</li>
-<li>rspec mocks</li>
-</ol>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -931,6 +963,10 @@ work, don&#8217;t know how to improve yourself, please think about other points.
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/04/07/tools-for-every-rails-developer/">tools and tips for every rails developer</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/01/27/production-rails/">Production Rails - Overview</a>
       </li>
     
@@ -944,10 +980,6 @@ work, don&#8217;t know how to improve yourself, please think about other points.
     
       <li class="post">
         <a href="/blog/2012/09/28/after-one-year/">after-one-year</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/08/30/active-record-dirty/">active_record_dirty</a>
       </li>
     
   </ul>
