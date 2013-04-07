@@ -4,7 +4,7 @@
   <title><![CDATA[Lizhe.name]]></title>
   <link href="http://zhelee.github.com/atom.xml" rel="self"/>
   <link href="http://zhelee.github.com/"/>
-  <updated>2013-04-07T22:54:36+08:00</updated>
+  <updated>2013-04-07T23:31:23+08:00</updated>
   <id>http://zhelee.github.com/</id>
   <author>
     <name><![CDATA[Lizhe]]></name>
@@ -12,6 +12,198 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[production rails - log]]></title>
+    <link href="http://zhelee.github.com/blog/2013/04/07/production-rails-log/"/>
+    <updated>2013-04-07T23:28:00+08:00</updated>
+    <id>http://zhelee.github.com/blog/2013/04/07/production-rails-log</id>
+    <content type="html"><![CDATA[<p>I use heroku when I started learning rails. Heroku provide very good log tool to let you check what&#8217;s happeing when the app is running. There is no capistrano recipes by default, I created the following log recipes, hope it will help someone.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>desc "tail log files"
+</span><span class='line'>namespace :log do
+</span><span class='line'>  task :rails, :roles =&gt; :app do
+</span><span class='line'>    run "tail -f #{shared_path}/log/production.log" do |channel, stream, data|
+</span><span class='line'>      puts "#{channel[:host]}: #{data}"
+</span><span class='line'>      break if stream == :err
+</span><span class='line'>    end
+</span><span class='line'>  end
+</span><span class='line'>
+</span><span class='line'>  task :unicorn_error, :roles =&gt; :app do
+</span><span class='line'>    run "tail -f #{shared_path}/log/unicorn_stderr.log" do |channel, stream, data|
+</span><span class='line'>      puts "#{channel[:host]}: #{data}"
+</span><span class='line'>      break if stream == :err
+</span><span class='line'>    end
+</span><span class='line'>  end
+</span><span class='line'>
+</span><span class='line'>  task :unicorn_out, :roles =&gt; :app do
+</span><span class='line'>    run "tail -f #{shared_path}/log/unicorn_stdout.log" do |channel, stream, data|
+</span><span class='line'>      puts "#{channel[:host]}: #{data}"
+</span><span class='line'>      break if stream == :err
+</span><span class='line'>    end
+</span><span class='line'>  end
+</span><span class='line'>
+</span><span class='line'>  task :nginx_error, :roles =&gt; :web do
+</span><span class='line'>    run "tail -f /var/log/nginx/error.log" do |channel, stream, data|
+</span><span class='line'>      puts "#{channel[:host]}: #{data}"
+</span><span class='line'>      break if stream == :err
+</span><span class='line'>    end
+</span><span class='line'>  end
+</span><span class='line'>
+</span><span class='line'>  task :nginx_access, :roles =&gt; :web do
+</span><span class='line'>    run "tail -f /var/log/nginx/access.log" do |channel, stream, data|
+</span><span class='line'>      puts "#{channel[:host]}: #{data}"
+</span><span class='line'>      break if stream == :err
+</span><span class='line'>    end
+</span><span class='line'>  end
+</span><span class='line'>end</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[production rails - assets precompile]]></title>
+    <link href="http://zhelee.github.com/blog/2013/04/07/production-rails-assets-precompile/"/>
+    <updated>2013-04-07T23:15:00+08:00</updated>
+    <id>http://zhelee.github.com/blog/2013/04/07/production-rails-assets-precompile</id>
+    <content type="html"><![CDATA[<p>Precompile assets can take long time during deployment. And actually you don&#8217;t need to precompile it for every deployment. Use git to check whether file has changed to avoid precompile assets everytime.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>namespace :deploy do
+</span><span class='line'>  namespace :assets do
+</span><span class='line'>    task :precompile, :roles =&gt; :web, :except =&gt; { :no_release =&gt; true } do
+</span><span class='line'>      from = source.next_revision(current_revision)
+</span><span class='line'>      if capture("cd #{latest_release} && #{source.local.log(from)} vendor/assets/ app/assets/ | wc -l").to_i &gt; 0
+</span><span class='line'>        run %Q{cd #{latest_release} && #{rake} RAILS_ENV=#{rails_env} #{asset_env} assets:precompile}
+</span><span class='line'>      else
+</span><span class='line'>        logger.info "Skipping asset pre-compilation because there were no asset changes"
+</span><span class='line'>      end
+</span><span class='line'>    end
+</span><span class='line'>  end
+</span><span class='line'>end</span></code></pre></td></tr></table></div></figure>
+
+
+<p>this solution precompile assets in the server side.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>namespace :deploy do
+</span><span class='line'>  namespace :assets do
+</span><span class='line'>
+</span><span class='line'>    task :precompile, :roles =&gt; :web do
+</span><span class='line'>      from = source.next_revision(current_revision)
+</span><span class='line'>      if capture("cd #{latest_release} && #{source.local.log(from)} -- vendor/assets/ lib/assets/ app/assets/ | wc -l").to_i &gt; 0
+</span><span class='line'>        run_locally("rake assets:clean && rake assets:precompile")
+</span><span class='line'>        run_locally "cd public && tar -jcf assets.tar.bz2 assets"
+</span><span class='line'>        top.upload "public/assets.tar.bz2", "#{shared_path}", :via =&gt; :scp
+</span><span class='line'>        run "cd #{shared_path} && tar -jxf assets.tar.bz2 && rm assets.tar.bz2"
+</span><span class='line'>        run_locally "rm public/assets.tar.bz2"
+</span><span class='line'>        run_locally("rake assets:clean")
+</span><span class='line'>      else
+</span><span class='line'>        logger.info "Skipping asset precompilation because there were no asset changes"
+</span><span class='line'>      end
+</span><span class='line'>    end
+</span><span class='line'>  end
+</span><span class='line'>end</span></code></pre></td></tr></table></div></figure>
+
+
+<p>this solution will precompile assets locally and upload the assets to the server. It&#8217;s better, precompile assets can take a lot of cpu and memory, in this way, it won&#8217;t affect the server while deploy code.</p>
+
+<p>There is a gem called <a href="https://github.com/ndbroadbent/turbo-sprockets-rails3">turbo-sprockets-rails3</a> also can solve this problem, just add this gem to your gemfile, and it works.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[production rails - deploy]]></title>
+    <link href="http://zhelee.github.com/blog/2013/04/07/production-rails-deploy/"/>
+    <updated>2013-04-07T23:01:00+08:00</updated>
+    <id>http://zhelee.github.com/blog/2013/04/07/production-rails-deploy</id>
+    <content type="html"><![CDATA[<p>Capistrano deployment use ssh to deploy. In most of the time, you will first push your code to a vcs system. Let&#8217;s say we are using git and github. The deployment process is like this:</p>
+
+<ol>
+<li>ssh into server</li>
+<li>checkout code from github</li>
+</ol>
+
+
+<p>We don&#8217;t want to input password whenver we want to deploy. So we need to copy ssh public key to the server. We Can use <code>ssh-copy-id username@server</code> to simplify this step. after this step we can ssh into server without input any password.</p>
+
+<p>When checking code from github it needs the ssh key in our develop computer, so here we need to setup ssh-forward.</p>
+
+<ol>
+<li>add <code>ssh_options[:forward_agent] = true</code> to <code>config/deploy.rb</code></li>
+<li>be sure a <code>ssh-agent</code> enabled <code>bash</code> is started. if not, use <code>exec ssh-agent bash</code> to start</li>
+<li>be sure <code>ssh key</code> is added, use <code>ssh-add -l</code> to check your ssh key is added, if not, use <code>ssh-add .ssh/your-key</code> to add it</li>
+</ol>
+
+
+<p>by doing the above steps, you can use <code>cap deploy</code> to checkout code from github in the server whitout add another ssh key for the server to github.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[tools and tips for every rails developer]]></title>

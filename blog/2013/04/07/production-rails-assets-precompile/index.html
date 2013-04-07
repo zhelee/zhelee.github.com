@@ -1,0 +1,295 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>production rails - assets precompile - Lizhe.name</title>
+  <meta name="author" content="Lizhe">
+
+  
+  <meta name="description" content="Precompile assets can take long time during deployment. And actually you don&#8217;t need to precompile it for every deployment. Use git to check &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://zhelee.github.com/blog/2013/04/07/production-rails-assets-precompile/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Lizhe.name" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<!--<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">-->
+<!--<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">-->
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Lizhe.name</a></h1>
+  
+    <h2>Bricklayer</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:zhelee.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Production Rails - Assets Precompile</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-07T23:15:00+08:00" pubdate data-updated="true">Apr 7<span>th</span>, 2013</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Precompile assets can take long time during deployment. And actually you don&#8217;t need to precompile it for every deployment. Use git to check whether file has changed to avoid precompile assets everytime.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>namespace :deploy do
+</span><span class='line'>  namespace :assets do
+</span><span class='line'>    task :precompile, :roles =&gt; :web, :except =&gt; { :no_release =&gt; true } do
+</span><span class='line'>      from = source.next_revision(current_revision)
+</span><span class='line'>      if capture("cd #{latest_release} && #{source.local.log(from)} vendor/assets/ app/assets/ | wc -l").to_i &gt; 0
+</span><span class='line'>        run %Q{cd #{latest_release} && #{rake} RAILS_ENV=#{rails_env} #{asset_env} assets:precompile}
+</span><span class='line'>      else
+</span><span class='line'>        logger.info "Skipping asset pre-compilation because there were no asset changes"
+</span><span class='line'>      end
+</span><span class='line'>    end
+</span><span class='line'>  end
+</span><span class='line'>end</span></code></pre></td></tr></table></div></figure>
+
+
+<p>this solution precompile assets in the server side.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>namespace :deploy do
+</span><span class='line'>  namespace :assets do
+</span><span class='line'>
+</span><span class='line'>    task :precompile, :roles =&gt; :web do
+</span><span class='line'>      from = source.next_revision(current_revision)
+</span><span class='line'>      if capture("cd #{latest_release} && #{source.local.log(from)} -- vendor/assets/ lib/assets/ app/assets/ | wc -l").to_i &gt; 0
+</span><span class='line'>        run_locally("rake assets:clean && rake assets:precompile")
+</span><span class='line'>        run_locally "cd public && tar -jcf assets.tar.bz2 assets"
+</span><span class='line'>        top.upload "public/assets.tar.bz2", "#{shared_path}", :via =&gt; :scp
+</span><span class='line'>        run "cd #{shared_path} && tar -jxf assets.tar.bz2 && rm assets.tar.bz2"
+</span><span class='line'>        run_locally "rm public/assets.tar.bz2"
+</span><span class='line'>        run_locally("rake assets:clean")
+</span><span class='line'>      else
+</span><span class='line'>        logger.info "Skipping asset precompilation because there were no asset changes"
+</span><span class='line'>      end
+</span><span class='line'>    end
+</span><span class='line'>  end
+</span><span class='line'>end</span></code></pre></td></tr></table></div></figure>
+
+
+<p>this solution will precompile assets locally and upload the assets to the server. It&#8217;s better, precompile assets can take a lot of cpu and memory, in this way, it won&#8217;t affect the server while deploy code.</p>
+
+<p>There is a gem called <a href="https://github.com/ndbroadbent/turbo-sprockets-rails3">turbo-sprockets-rails3</a> also can solve this problem, just add this gem to your gemfile, and it works.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Lizhe</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-07T23:15:00+08:00" pubdate data-updated="true">Apr 7<span>th</span>, 2013</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/04/07/production-rails-deploy/" title="Previous Post: production rails - deploy">&laquo; production rails - deploy</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2013/04/07/production-rails-log/" title="Next Post: production rails - log">production rails - log &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/04/07/production-rails-log/">production rails - log</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/04/07/production-rails-assets-precompile/">production rails - assets precompile</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/04/07/production-rails-deploy/">production rails - deploy</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/04/07/tools-for-every-rails-developer/">tools and tips for every rails developer</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/01/27/production-rails/">Production Rails - Overview</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Lizhe -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'lizhe-name';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://zhelee.github.com/blog/2013/04/07/production-rails-assets-precompile/';
+        var disqus_url = 'http://zhelee.github.com/blog/2013/04/07/production-rails-assets-precompile/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

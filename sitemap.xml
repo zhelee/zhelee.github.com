@@ -65,11 +65,23 @@
         <lastmod>2013-04-07T22:54:35+08:00</lastmod>
     </url>
     <url>
+        <loc>http://zhelee.github.com/blog/2013/04/07/production-rails-deploy/</loc>
+        <lastmod>2013-04-07T23:14:22+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://zhelee.github.com/blog/2013/04/07/production-rails-assets-precompile/</loc>
+        <lastmod>2013-04-07T23:26:45+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://zhelee.github.com/blog/2013/04/07/production-rails-log/</loc>
+        <lastmod>2013-04-07T23:31:22+08:00</lastmod>
+    </url>
+    <url>
         <loc>http://zhelee.github.com/blog/archives/</loc>
-        <lastmod>2013-04-07T22:54:35+08:00</lastmod>
+        <lastmod>2013-04-07T23:31:22+08:00</lastmod>
     </url>
     <url>
         <loc>http://zhelee.github.com/</loc>
-        <lastmod>2013-04-07T22:54:35+08:00</lastmod>
+        <lastmod>2013-04-07T23:31:22+08:00</lastmod>
     </url>
 </urlset>

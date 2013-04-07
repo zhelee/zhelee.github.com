@@ -5,12 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>ruby vim code completion - Lizhe.name</title>
+  <title>production rails - deploy - Lizhe.name</title>
   <meta name="author" content="Lizhe">
 
   
-  <meta name="description" content="the best editor I have ever used. vim-ruby
-">
+  <meta name="description" content="Capistrano deployment use ssh to deploy. In most of the time, you will first push your code to a vcs system. Let&#8217;s say we are using git and &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://zhelee.github.com/blog/2012/07/19/ruby-vim-code-completion/">
+  <link rel="canonical" href="http://zhelee.github.com/blog/2013/04/07/production-rails-deploy/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -68,7 +67,7 @@
   
   <header>
     
-      <h1 class="entry-title">Ruby Vim Code Completion</h1>
+      <h1 class="entry-title">Production Rails - Deploy</h1>
     
     
       <p class="meta">
@@ -84,7 +83,7 @@
   
 
 
-<time datetime="2012-07-19T10:15:00+08:00" pubdate data-updated="true">Jul 19<span>th</span>, 2012</time>
+<time datetime="2013-04-07T23:01:00+08:00" pubdate data-updated="true">Apr 7<span>th</span>, 2013</time>
         
          | <a href="#disqus_thread">Comments</a>
         
@@ -93,9 +92,26 @@
   </header>
 
 
-<div class="entry-content"><h3>the best editor I have ever used.</h3>
+<div class="entry-content"><p>Capistrano deployment use ssh to deploy. In most of the time, you will first push your code to a vcs system. Let&#8217;s say we are using git and github. The deployment process is like this:</p>
 
-<p><a href="https://github.com/vim-ruby/vim-ruby">vim-ruby</a></p>
+<ol>
+<li>ssh into server</li>
+<li>checkout code from github</li>
+</ol>
+
+
+<p>We don&#8217;t want to input password whenver we want to deploy. So we need to copy ssh public key to the server. We Can use <code>ssh-copy-id username@server</code> to simplify this step. after this step we can ssh into server without input any password.</p>
+
+<p>When checking code from github it needs the ssh key in our develop computer, so here we need to setup ssh-forward.</p>
+
+<ol>
+<li>add <code>ssh_options[:forward_agent] = true</code> to <code>config/deploy.rb</code></li>
+<li>be sure a <code>ssh-agent</code> enabled <code>bash</code> is started. if not, use <code>exec ssh-agent bash</code> to start</li>
+<li>be sure <code>ssh key</code> is added, use <code>ssh-add -l</code> to check your ssh key is added, if not, use <code>ssh-add .ssh/your-key</code> to add it</li>
+</ol>
+
+
+<p>by doing the above steps, you can use <code>cap deploy</code> to checkout code from github in the server whitout add another ssh key for the server to github.</p>
 </div>
 
 
@@ -118,14 +134,8 @@
   
 
 
-<time datetime="2012-07-19T10:15:00+08:00" pubdate data-updated="true">Jul 19<span>th</span>, 2012</time>
+<time datetime="2013-04-07T23:01:00+08:00" pubdate data-updated="true">Apr 7<span>th</span>, 2013</time>
       
-
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/ruby/'>ruby</a>, <a class='category' href='/blog/categories/vim/'>vim</a>
-  
-</span>
 
 
     </p>
@@ -139,10 +149,10 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2012/07/17/ruby-index/" title="Previous Post: ruby index">&laquo; ruby index</a>
+        <a class="basic-alignment left" href="/blog/2013/04/07/tools-for-every-rails-developer/" title="Previous Post: tools and tips for every rails developer">&laquo; tools and tips for every rails developer</a>
       
       
-        <a class="basic-alignment right" href="/blog/2012/07/23/2012-07-23/" title="Next Post: 2012-07-23">2012-07-23 &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2013/04/07/production-rails-assets-precompile/" title="Next Post: production rails - assets precompile">production rails - assets precompile &raquo;</a>
       
     </p>
   </footer>
@@ -209,8 +219,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://zhelee.github.com/blog/2012/07/19/ruby-vim-code-completion/';
-        var disqus_url = 'http://zhelee.github.com/blog/2012/07/19/ruby-vim-code-completion/';
+        var disqus_identifier = 'http://zhelee.github.com/blog/2013/04/07/production-rails-deploy/';
+        var disqus_url = 'http://zhelee.github.com/blog/2013/04/07/production-rails-deploy/';
         var disqus_script = 'embed.js';
       
     (function () {

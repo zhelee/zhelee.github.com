@@ -9,7 +9,7 @@
   <meta name="author" content="Lizhe">
 
   
-  <meta name="description" content="Being a rails developer for almost 2 years, I found a lot of tools for easily developing rails application including ruby gems, editors, browser &hellip;">
+  <meta name="description" content="I use heroku when I started learning rails. Heroku provide very good log tool to let you check what&#8217;s happeing when the app is running. There &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -64,6 +64,285 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/04/07/production-rails-log/">Production Rails - Log</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-07T23:28:00+08:00" pubdate data-updated="true">Apr 7<span>th</span>, 2013</time>
+        
+         | <a href="/blog/2013/04/07/production-rails-log/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I use heroku when I started learning rails. Heroku provide very good log tool to let you check what&#8217;s happeing when the app is running. There is no capistrano recipes by default, I created the following log recipes, hope it will help someone.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>desc "tail log files"
+</span><span class='line'>namespace :log do
+</span><span class='line'>  task :rails, :roles =&gt; :app do
+</span><span class='line'>    run "tail -f #{shared_path}/log/production.log" do |channel, stream, data|
+</span><span class='line'>      puts "#{channel[:host]}: #{data}"
+</span><span class='line'>      break if stream == :err
+</span><span class='line'>    end
+</span><span class='line'>  end
+</span><span class='line'>
+</span><span class='line'>  task :unicorn_error, :roles =&gt; :app do
+</span><span class='line'>    run "tail -f #{shared_path}/log/unicorn_stderr.log" do |channel, stream, data|
+</span><span class='line'>      puts "#{channel[:host]}: #{data}"
+</span><span class='line'>      break if stream == :err
+</span><span class='line'>    end
+</span><span class='line'>  end
+</span><span class='line'>
+</span><span class='line'>  task :unicorn_out, :roles =&gt; :app do
+</span><span class='line'>    run "tail -f #{shared_path}/log/unicorn_stdout.log" do |channel, stream, data|
+</span><span class='line'>      puts "#{channel[:host]}: #{data}"
+</span><span class='line'>      break if stream == :err
+</span><span class='line'>    end
+</span><span class='line'>  end
+</span><span class='line'>
+</span><span class='line'>  task :nginx_error, :roles =&gt; :web do
+</span><span class='line'>    run "tail -f /var/log/nginx/error.log" do |channel, stream, data|
+</span><span class='line'>      puts "#{channel[:host]}: #{data}"
+</span><span class='line'>      break if stream == :err
+</span><span class='line'>    end
+</span><span class='line'>  end
+</span><span class='line'>
+</span><span class='line'>  task :nginx_access, :roles =&gt; :web do
+</span><span class='line'>    run "tail -f /var/log/nginx/access.log" do |channel, stream, data|
+</span><span class='line'>      puts "#{channel[:host]}: #{data}"
+</span><span class='line'>      break if stream == :err
+</span><span class='line'>    end
+</span><span class='line'>  end
+</span><span class='line'>end</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/04/07/production-rails-assets-precompile/">Production Rails - Assets Precompile</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-07T23:15:00+08:00" pubdate data-updated="true">Apr 7<span>th</span>, 2013</time>
+        
+         | <a href="/blog/2013/04/07/production-rails-assets-precompile/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Precompile assets can take long time during deployment. And actually you don&#8217;t need to precompile it for every deployment. Use git to check whether file has changed to avoid precompile assets everytime.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>namespace :deploy do
+</span><span class='line'>  namespace :assets do
+</span><span class='line'>    task :precompile, :roles =&gt; :web, :except =&gt; { :no_release =&gt; true } do
+</span><span class='line'>      from = source.next_revision(current_revision)
+</span><span class='line'>      if capture("cd #{latest_release} && #{source.local.log(from)} vendor/assets/ app/assets/ | wc -l").to_i &gt; 0
+</span><span class='line'>        run %Q{cd #{latest_release} && #{rake} RAILS_ENV=#{rails_env} #{asset_env} assets:precompile}
+</span><span class='line'>      else
+</span><span class='line'>        logger.info "Skipping asset pre-compilation because there were no asset changes"
+</span><span class='line'>      end
+</span><span class='line'>    end
+</span><span class='line'>  end
+</span><span class='line'>end</span></code></pre></td></tr></table></div></figure>
+
+
+<p>this solution precompile assets in the server side.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>namespace :deploy do
+</span><span class='line'>  namespace :assets do
+</span><span class='line'>
+</span><span class='line'>    task :precompile, :roles =&gt; :web do
+</span><span class='line'>      from = source.next_revision(current_revision)
+</span><span class='line'>      if capture("cd #{latest_release} && #{source.local.log(from)} -- vendor/assets/ lib/assets/ app/assets/ | wc -l").to_i &gt; 0
+</span><span class='line'>        run_locally("rake assets:clean && rake assets:precompile")
+</span><span class='line'>        run_locally "cd public && tar -jcf assets.tar.bz2 assets"
+</span><span class='line'>        top.upload "public/assets.tar.bz2", "#{shared_path}", :via =&gt; :scp
+</span><span class='line'>        run "cd #{shared_path} && tar -jxf assets.tar.bz2 && rm assets.tar.bz2"
+</span><span class='line'>        run_locally "rm public/assets.tar.bz2"
+</span><span class='line'>        run_locally("rake assets:clean")
+</span><span class='line'>      else
+</span><span class='line'>        logger.info "Skipping asset precompilation because there were no asset changes"
+</span><span class='line'>      end
+</span><span class='line'>    end
+</span><span class='line'>  end
+</span><span class='line'>end</span></code></pre></td></tr></table></div></figure>
+
+
+<p>this solution will precompile assets locally and upload the assets to the server. It&#8217;s better, precompile assets can take a lot of cpu and memory, in this way, it won&#8217;t affect the server while deploy code.</p>
+
+<p>There is a gem called <a href="https://github.com/ndbroadbent/turbo-sprockets-rails3">turbo-sprockets-rails3</a> also can solve this problem, just add this gem to your gemfile, and it works.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/04/07/production-rails-deploy/">Production Rails - Deploy</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-07T23:01:00+08:00" pubdate data-updated="true">Apr 7<span>th</span>, 2013</time>
+        
+         | <a href="/blog/2013/04/07/production-rails-deploy/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Capistrano deployment use ssh to deploy. In most of the time, you will first push your code to a vcs system. Let&#8217;s say we are using git and github. The deployment process is like this:</p>
+
+<ol>
+<li>ssh into server</li>
+<li>checkout code from github</li>
+</ol>
+
+
+<p>We don&#8217;t want to input password whenver we want to deploy. So we need to copy ssh public key to the server. We Can use <code>ssh-copy-id username@server</code> to simplify this step. after this step we can ssh into server without input any password.</p>
+
+<p>When checking code from github it needs the ssh key in our develop computer, so here we need to setup ssh-forward.</p>
+
+<ol>
+<li>add <code>ssh_options[:forward_agent] = true</code> to <code>config/deploy.rb</code></li>
+<li>be sure a <code>ssh-agent</code> enabled <code>bash</code> is started. if not, use <code>exec ssh-agent bash</code> to start</li>
+<li>be sure <code>ssh key</code> is added, use <code>ssh-add -l</code> to check your ssh key is added, if not, use <code>ssh-add .ssh/your-key</code> to add it</li>
+</ol>
+
+
+<p>by doing the above steps, you can use <code>cap deploy</code> to checkout code from github in the server whitout add another ssh key for the server to github.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -730,224 +1009,6 @@ work, don&#8217;t know how to improve yourself, please think about other points.
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/08/13/2012-08-13/">2012-08-13</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-08-13T13:26:00+08:00" pubdate data-updated="true">Aug 13<span>th</span>, 2012</time>
-        
-         | <a href="/blog/2012/08/13/2012-08-13/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><ol>
-<li>Rails
-
-<ul>
-<li><a href="http://blog.xdite.net/posts/2012/08/12/pry-the-new-debugger/?utm_source=feedburner&amp;utm_medium=feed&amp;utm_campaign=Feed%3A+xxddite+%28Blog.XDite.net%29">pry as debuger</a></li>
-<li>.gemrc</li>
-<li>.pryrc</li>
-</ul>
-</li>
-<li>Linux
-
-<ul>
-<li><a href="http://stackoverflow.com/questions/5154539/find-file-modes-in-console-fuzzy-completion">fuzzy bash completion</a></li>
-</ul>
-</li>
-</ol>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/08/08/2012-08-08/">2012-08-08</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-08-08T10:11:00+08:00" pubdate data-updated="true">Aug 8<span>th</span>, 2012</time>
-        
-         | <a href="/blog/2012/08/08/2012-08-08/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><ol>
-<li>git rebase
- *<a href="http://blog.yorkxin.org/2011/07/29/git-rebase">git rebase 小计</a></li>
-<li>tig</li>
-<li><a href="http://zeusville.wordpress.com/2010/05/19/git-branch-in-shell-prompt/">git branch in shell prompt</a></li>
-<li>shell prompt colors</li>
-<li>configurations
-
-<ul>
-<li><a href="http://ihower.tw/blog/archives/5436/">ihower</a></li>
-</ul>
-</li>
-<li>workflow
-
-<ul>
-<li><a href="http://nvie.com/posts/a-successful-git-branching-model/">git working model</a></li>
-</ul>
-</li>
-<li>shell
-
-<ul>
-<li><a href="http://networking.ringofsaturn.com/Unix/Bash-prompts.php">shell prompt</a></li>
-<li><a href="https://wiki.archlinux.org/index.php/Color_Bash_Prompt">shell prompt colors</a></li>
-</ul>
-</li>
-<li>tips
-
-<ul>
-<li><a href="http://andyjeffries.co.uk/articles/25-tips-for-intermediate-git-users/">25 tips</a></li>
-</ul>
-</li>
-<li>rake
-
-<ul>
-<li><a href="http://turadg.aleahmad.net/2011/02/bash-completion-for-rake-tasks/">rake completion</a></li>
-</ul>
-</li>
-<li>vim
-
-<ul>
-<li><a href="http://www.thegeekstuff.com/2009/01/vi-and-vim-editor-5-awesome-examples-for-automatic-word-completion-using-ctrl-x-magic/">vim builtin completion</a></li>
-</ul>
-</li>
-<li>rails
-
-<ul>
-<li>composed_of</li>
-<li>locale
-
-<ul>
-<li>t(&#8220;.locale_translation&#8221;), in this way, it will find by the view path, app/views/people/index will be people.index.local_translation</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>linux
-
-<ul>
-<li>echo something >> file , will append something to the end file</li>
-</ul>
-</li>
-<li>YAML
-
-<ul>
-<li><a href="http://stackoverflow.com/questions/9254178/is-there-yaml-syntax-for-sharing-part-of-a-list-or-map">share value</a></li>
-</ul>
-</li>
-</ol>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/08/02/2012-08-02/">2012-08-02</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-08-02T17:27:00+08:00" pubdate data-updated="true">Aug 2<span>nd</span>, 2012</time>
-        
-         | <a href="/blog/2012/08/02/2012-08-02/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><ol>
-<li>rails helpers
-
-<ul>
-<li>render_to_string</li>
-<li><a href="http://api.rubyonrails.org/classes/AbstractController/Helpers/ClassMethods.html#method-i-helper">rails helper method in controller</a></li>
-<li><a href="http://stackoverflow.com/questions/453762/nomethoderror-when-trying-to-invoke-helper-method-from-rails-controller">rails helper share in controller and view</a></li>
-<li><a href="http://nicksda.apotomo.de/2011/10/rails-misapprehensions-helpers-are-shit/">rails helper are shit</a></li>
-<li><a href="http://stackoverflow.com/questions/5938895/how-to-define-rails-helper-for-one-specific-action">rails same helper for differnt controller and others</a></li>
-</ul>
-</li>
-<li>git reset , git branch operation
-
-<ul>
-<li><a href="http://blog.microsuncn.com/?tag=git-reset-%E5%9B%9E%E9%80%80%E4%BB%A5%E5%89%8D%E6%9F%90%E4%B8%AA%E7%89%88%E6%9C%AC">git reset</a></li>
-<li><a href="http://stackoverflow.com/questions/2003505/how-do-i-delete-a-git-branch-both-locally-and-in-github">git delete branch local and remote</a></li>
-<li><a href="http://stackoverflow.com/questions/67699/how-do-i-clone-all-remote-branches-with-git">git all branches</a></li>
-</ul>
-</li>
-</ol>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -963,23 +1024,23 @@ work, don&#8217;t know how to improve yourself, please think about other points.
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/04/07/production-rails-log/">production rails - log</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/04/07/production-rails-assets-precompile/">production rails - assets precompile</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/04/07/production-rails-deploy/">production rails - deploy</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/04/07/tools-for-every-rails-developer/">tools and tips for every rails developer</a>
       </li>
     
       <li class="post">
         <a href="/blog/2013/01/27/production-rails/">Production Rails - Overview</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/11/12/how-do-I-learn-ruby-and-rails/">How do I learn ruby and rails</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/09/28/whats-wrong-with-these-coders/">程序员到底怎么了</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/09/28/after-one-year/">after-one-year</a>
       </li>
     
   </ul>
