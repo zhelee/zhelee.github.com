@@ -9,7 +9,16 @@
   <meta name="author" content="Lizhe">
 
   
-  <meta name="description" content="I have learned ruby and rails for 1 year and 4 months. I collected a lot of great resources about ruby and rails from internet, it could be helpeful &hellip;">
+  <meta name="description" content="The tools Nginx
+Unicorn
+PostgreSQL
+Capistrano
+RVM
+Git
+Puppet
+Vagrant
+Linux (We are using ubuntu 12.10) Ruby and Rails Ruby 1.9.3
+Rails 3.2.11 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -64,6 +73,151 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/01/27/production-rails/">Production Rails - Overview</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-01-27T07:24:00+08:00" pubdate data-updated="true">Jan 27<span>th</span>, 2013</time>
+        
+         | <a href="/blog/2013/01/27/production-rails/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><strong> The tools </strong></p>
+
+<ol>
+<li>Nginx</li>
+<li>Unicorn</li>
+<li>PostgreSQL</li>
+<li>Capistrano</li>
+<li>RVM</li>
+<li>Git</li>
+<li>Puppet</li>
+<li>Vagrant</li>
+<li>Linux (We are using ubuntu 12.10)</li>
+</ol>
+
+
+<p><strong> Ruby and Rails </strong></p>
+
+<ol>
+<li>Ruby 1.9.3</li>
+<li>Rails 3.2.11</li>
+</ol>
+
+
+<p><strong> Database </strong></p>
+
+<ol>
+<li>PostgresSQL 9.1</li>
+</ol>
+
+
+<p><strong> Some linux knowledge </strong></p>
+
+<ol>
+<li>How to start, stop, restart a linux service</li>
+<li>How to let a service start when linux boot up</li>
+<li>How to create a user in linux</li>
+<li>SSH</li>
+</ol>
+
+
+<hr />
+
+<h2>Create a depoyer user</h2>
+
+<p><strong> 1. Why do we need to create a new user to deploy the application </strong></p>
+
+<p>When we deploy a proudction rails, it&#8217;s a little different from its development mode and it&#8217;s better to let a specific user with specific rights to do the deployment to avoid mistakes, and it&#8217;s easier to log the deployments.</p>
+
+<p><strong> 2. How to </strong></p>
+
+<p>In ubuntu, we use the following command to create an user with specific home directory and a password: <code>sudo adduser deployer</code>, and follow the prompted instruction, it&#8217;s easily to create a user called deployer with a home directory /home/deployer.</p>
+
+<h2>Install the softwares</h2>
+
+<p><strong> 1. Install RVM, Ruby, Rails, PostgresSQL, Vagrant, Puppet</strong></p>
+
+<p>There are thousands of tutorials to install these things, just remember the version we mentioned above. And there are some points which could help if there got some problems:</p>
+
+<ol>
+<li>RVM for single user or system. I recommend to install as system on a server, because ruby could be used for other users, for example maintenance users. and the user wants to user rvm is needed to be added to the rvm group;</li>
+<li><strong><strong> For PostgresSQL. When you first install PostgresSQL, it&#8217;s needed to configure <code>/etc/postgres/9.1/main/pg_hba.conf</code> to let PostgresSQL to be able to be connected.</strong></strong>;</li>
+<li>Vagrant and Puppet are written by ruby, so we can install them by <code>gem install [vagrant|puppet]</code></li>
+</ol>
+
+
+<p><strong> 2. Unicorn </strong></p>
+
+<p>Unicorn is a great app server for rails, it gives the oppertunity to do a zero downtime deployment</p>
+
+<ol>
+<li><code>gem install unicorn</code> or add <code>unicorn</code> to <code>Gemfile</code></li>
+</ol>
+
+
+<p><strong> 3. Set up Vagrant </strong></p>
+
+<p>We will talk about vagrant in another post, at this time you can check its offical website, <a href="http://vagrantup.com">vagrantup.com</a></p>
+
+<p><strong> 4. Set up Puppet </strong></p>
+
+<p>We use Puppet to provision the server environment, to keep the same softwares and configurations between the virtual machine and the real server, we will talk about puppet in another post too, at this time you can the cookbook of puppet, <a href="http://www.puppetcookbook.com">puppet cookbook</a></p>
+
+<p><strong> 5. Capistrano </strong></p>
+
+<p>We will use capistrano to deploy the application. and because the env configration changes depends on the application itself, we use capistrano to set nginx and unicorn configurations during the deployment process.</p>
+
+<p><strong> The big overview for deploying an rails production application </strong></p>
+
+<ol>
+<li>Use Git as the source control system. Before deploying the application to the server, forbid any code change to be pushed to the Git server;</li>
+<li>run the unit test, if tests are passed, go to step 3;</li>
+<li>Use Vagrant to set up a staging server, in this step, code will be deployed to this staging server, if the deployment is successful, go to step 4;</li>
+<li>Run capistrano to deploy the application, in the capistrano deploying file, there are the following steps:
+
+<ol>
+<li>deploy the code</li>
+<li>run the assets compile</li>
+<li>run the database migration</li>
+<li>restart process if needed</li>
+<li>if the new code fails to run, use capistrano to rollback the previous version;</li>
+</ol>
+</li>
+</ol>
+
+
+<hr />
+
+<p>In the following posts, I will talk every topic in a seprated post. and here will be the list of these posts.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -196,134 +350,6 @@
 <hr />
 
 <p><em><strong>This post will be always update when I find new resource which is great to share here</strong></em></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/11/12/production-rails/">Production Rails</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-11-12T07:24:00+08:00" pubdate data-updated="true">Nov 12<span>th</span>, 2012</time>
-        
-         | <a href="/blog/2012/11/12/production-rails/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><strong> The tools </strong></p>
-
-<ol>
-<li>Nginx</li>
-<li>Passenger</li>
-<li>Memedcache</li>
-<li>Capistrano</li>
-<li>RVM</li>
-<li>Git</li>
-<li>Linux (We are using ubuntu 12.10)</li>
-</ol>
-
-
-<p><strong> Ruby and Rails </strong></p>
-
-<ol>
-<li>Ruby 1.9.3</li>
-<li>Rails 3.2.8</li>
-</ol>
-
-
-<p><strong> Database </strong></p>
-
-<ol>
-<li>PostgresSQL 9.1</li>
-</ol>
-
-
-<p><strong> Some linux knowledge </strong></p>
-
-<ol>
-<li>How to start, stop, restart a linux service</li>
-<li>How to let a service start when linux boot up</li>
-<li>How to create a user in linux</li>
-<li>SSH</li>
-</ol>
-
-
-<p><strong> The big overview for deploying an rails production application </strong></p>
-
-<ol>
-<li>Use Git as the source control system. Before deploying the application to the server, forbid any code change to be pushed to the Git server;</li>
-<li>Check the code through Git in CI server, and run the test, if tests are passed, go to step 3;</li>
-<li>Run capistrano to deploy the application, in the capistrano deploying file, there are the following steps:
-
-<ol>
-<li>set the status of the current production application server to be <strong>maintenance</strong>;</li>
-<li>deploy the code</li>
-<li>run the assets compile</li>
-<li>run the database migration</li>
-<li>set the status of the current production application server to be <strong>running</strong>;</li>
-<li>if the new code fails to run, use capistrano to rollback the previous version;</li>
-<li><strong><strong>something about cache</strong></strong></li>
-</ol>
-</li>
-</ol>
-
-
-<hr />
-
-<h2>Create a depoyer user</h2>
-
-<p><strong> 1. Why do we need to create a new user to deploy the application </strong></p>
-
-<p>When we deploy a proudction rails, it&#8217;s a little different from its development mode and it&#8217;s better to let a specific user with specific rights to do the deployment to avoid mistakes, and it&#8217;s easier to log the deployments.</p>
-
-<p><strong> 2. How to </strong></p>
-
-<p>In ubuntu, we use the following command to create an user with specific home directory and a password: <code>sudo adduser deployer</code>, and follow the prompted instruction, it&#8217;s easily to create a user called deployer with a home directory /home/deployer.</p>
-
-<h2>Install the softwares</h2>
-
-<p><strong> 1. Install RVM, Ruby, Rails, PostgresSQL </strong></p>
-
-<p>There are thousands of tutorials to install these things, just remember the version we mentioned above. And there are some points which could help if there got some problems:</p>
-
-<ol>
-<li>RVM for single user or system. I recommend to install as system on a server, because ruby could be used for other users, for example maintenance users. and the user wants to user rvm is needed to be added to the rvm group;</li>
-<li><strong><strong> For PostgresSQL. When you first install PostgresSQL, it&#8217;s needed to configure <code>/etc/postgres/9.1/main/pg_hba.conf</code> to let PostgresSQL to be able to be connected.</strong></strong>;</li>
-</ol>
-
-
-<p><strong> 2. Install passenger </strong></p>
-
-<p>Installing passenger is so easy, just the following 2 steps:</p>
-
-<ol>
-<li><code>gem install passenger</code></li>
-<li><code>[rvmsudo] passenger-install-nginx-module</code></li>
-</ol>
-
 </div>
   
   
@@ -905,11 +931,11 @@ work, don&#8217;t know how to improve yourself, please think about other points.
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2012/11/12/how-do-I-learn-ruby-and-rails/">How do I learn ruby and rails</a>
+        <a href="/blog/2013/01/27/production-rails/">Production Rails - Overview</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2012/11/12/production-rails/">Production Rails</a>
+        <a href="/blog/2012/11/12/how-do-I-learn-ruby-and-rails/">How do I learn ruby and rails</a>
       </li>
     
       <li class="post">
@@ -938,7 +964,7 @@ work, don&#8217;t know how to improve yourself, please think about other points.
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2012 - Lizhe -
+  Copyright &copy; 2013 - Lizhe -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
